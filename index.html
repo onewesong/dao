@@ -61,8 +61,8 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .chapter-nav-item.active {
@@ -106,7 +106,7 @@
     <div id="overlay" class="fixed inset-0 bg-black/20 z-40 hidden md:hidden backdrop-blur-sm transition-opacity opacity-0"></div>
 
     <!-- 主内容区 -->
-    <main class="flex-1 relative h-screen overflow-y-auto scroll-smooth">
+    <main class="flex-1 relative h-screen overflow-y-auto">
         <div class="max-w-3xl mx-auto px-6 py-12 md:py-20 min-h-full flex flex-col justify-center transition-all duration-500" id="content-area">
             
             <!-- 初始欢迎界面 -->
@@ -355,8 +355,8 @@
             for (let i = 0; i < items.length; i++) {
                 if (i === index) {
                     items[i].classList.add('active');
-                    // 确保可见
-                    items[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // 确保可见，但使用非平滑滚动以避免影响主内容
+                    items[i].scrollIntoView({ behavior: 'auto', block: 'nearest' });
                 } else {
                     items[i].classList.remove('active');
                 }
